@@ -1,139 +1,159 @@
-<!DOCTYPE html>
+<!doctype html>
+<html>
     <head>
-        <meta charset="utf-8">
-        <meta http-equiv="X-UA-Compatible" content="IE=edge">
-        <title>LGM 2019</title>
-        <meta name="description" content="Let's Get Mental 2019.">
-        <meta name="viewport" content="width=device-width, initial-scale=1">
-
-        <!-- Bootstrap -->
-        <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css" integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
-        <script src="https://code.jquery.com/jquery-3.4.1.slim.min.js" integrity="sha384-J6qa4849blE2+poT4WnyKhv5vZF5SrPo0iEjwBvKU7imGFAV0wwj1yYfoRSJoZ+n" crossorigin="anonymous"></script>
-        <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js" integrity="sha384-Q6E9RHvbIyZFJoft+2mJbHaEWldlvI9IOYy5n3zV9zzTtmI3UksdQRVvoxMfooAo" crossorigin="anonymous"></script>
-        <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js" integrity="sha384-wfSDF2E50Y2D1uUdj0O3uMBJnjuUD4Ih7YwaYd1iqfktj0Uod8GCExl3Og8ifwB6" crossorigin="anonymous"></script>
-        
-        <!-- Own CSS  -->
-        <link rel="stylesheet" href="style.css">
-
         <!-- FontAwesome -->
         <script src="https://kit.fontawesome.com/6e28df878b.js" crossorigin="anonymous"></script>
 
         <!-- SA2 -->
         <script src="https://cdn.jsdelivr.net/npm/sweetalert2@9"></script>
+
+        <meta name="viewport" content="width=device-width, initial-scale=1" />
+        <link rel="stylesheet" type="text/css" href="stylesheet.css" />
     </head>
     <body>
-        <div class="container">
-        <center>
-        <div class="jumbotron">
-                <img id="logo" src="./assets/LetsGetMental.png">
-                <p class="lead">Let's Get Mental is a fundraiser campaign created by <a href="https://twitch.tv/jaccy">Jaccy</a> to raise money <br>for The Scottish Association for Mental Health during 12-24th December.</p>
-                <p>You can donate using Bits or Subs in Jaccy's Streams, or donate in a #LetsGetMental stream.</p>
-                <p id="loggedin"></p>
-        </div>
+            <!-- The header of the website. -->
+            <div class="header">
+                <img id="main-logo" src="Images/Logo.png" />
+                <div class="total-container">
+                    <p id="total-raised-text">
+                        <b>Total Raised:</b>
+                    </p>
+                    <p id="total">
+                        <b>Loading.</b>
+                    </p>
+                </div>
+            </div>
+            <!-- The main content of the website. -->
+            <div class="main-container">
 
-        <hr>
-        <h2>Total Raised:</h2>
-        <b><h1 id="total">Error</h1></b>
+                <p class="title-text">
+                    <b>Foreword (by Jaccy)</b>
+                </p>
+                <p class="body-text">
+                    Whilst most of us pay attention to our physical health, we always seem to neglect our minds and our mental health.<br><br>
+                    Unfortunately, this can result in mental illnesses which can have long-lasting negative effects
+                    on both the individuals themselves and the people around them.<br><br>
+                    As someone who has personally struggled with a mental health illness, I've experienced many difficult challenges.<br><br>
+                    For a while, I've been wanting to create something unique. To inspire change and to decrease the stigma surrounding mental health.<br><br>
+                    After pondering on the idea for a while, this is the result: an ambitious venture called Let's Get Mental.
+                </p>
+                <p class="title-text">
+                    <b>What is Let's Get Mental?</b>
+                </p>
+                <p class="body-text">
+                    From December 12th to the 24th, myself along with other livestreamers will be creating content to raise awareness of mental health.<br><br>
+                    All money and proceeds earned from the Jaccy Twitch channel and any livestreamers channel that has supported the #LetsGetMental movement 
+                    will be donated to The Scottish Association for Mental Health.<br><br>
+                    You can spot a livestreamer that is supporting the cause by checking their title or description for the hashtag <b>#LetsGetMental</b>
+                </p>
+                <p class="title-text">
+                    Are there any special rewards for supporting?
+                </p>
+                <p class="body-text">
+                    For Subscribers to Jaccy, you will receive an elusive and special Let's Get Mental badge until December 24th!<br><br>
+                    <img id="emote-logo" src="Images/Emote.png" /><br><br>
+                    (Note: Other streamers will have their own rewards or possibly only the reward of knowing you did some good.
+                    Please read their panels or description for more information.)
+                </p>
+                <p class="title-text">
+                    <b>Who is particpating in Let's Get Mental?</b>
+                </p>
+                <p class="body-text">
+                    Below, you will find some of the participating livestreamers in the #LetsGetMental campaign.<br><br>
+                    Click on their name / icon to visit their stream!<br><br>
+                    If you would like to be on this list, please contact <a href="https://twitch.tv/jaccy">Jaccy</a> via Twitch / <b>Jaccy#4727</b> or <b>Stringy#4085</b> via Discord.
 
-        <h2 class="streamtitle"><i class="fab fa-twitch"></i>Jaccy</h2>
-        <div id="twitch-jaccy"></div>
-        </center>
-        
-        <div class="container jacthing">
-            <div id="stringy">
-                <h2 class="streamtitle"><i class="fab fa-twitch"></i>etStringy</h2><br><br>
-                <div id="twitch-stringy"></div>
+                    <div class="streamframe">
+                        <h2 class="streamtitle"><i class="fab fa-twitch"></i>Jaccy</h2>
+                        <iframe src="https://player.twitch.tv/?channel=jaccy" height="360"></iframe>
+                    </div>
+
+                    <div class="streamframe">
+                            <h2 class="streamtitle"><i class="fab fa-twitch"></i>etStringy</h2>
+                            <iframe src="https://player.twitch.tv/?channel=etstringy" height="360"></iframe>
+                    </div>
+
+                    <div class="streamframe">
+                            <h2 class="streamtitle"><i class="fab fa-twitch"></i>DoggyPvPz</h2>
+                            <iframe src="https://player.twitch.tv/?channel=doggypvpz" height="360"></iframe>
+                    </div>
+                </p>
             </div>
 
-            <div id="doggy">
-                <h2 class="streamtitle"><i class="fab fa-twitch"></i>DoggyPvPz</h2><br><br>
-                <div id="twitch-doggy"></div>
+            <div class="footer">
+                <p id="loggedin" class="title-text">
+                    <b>Website Design: Jaccy<br>
+                    Website Back-End: <a href="https://stringy.software">etStringy</a></b>
+                    <br>
+                    
+                </p>
             </div>
-        </div>
-
-        <script src="https://embed.twitch.tv/embed/v1.js"></script>
-        <center>
-        <script>
-            window.onload = () => {
-                fetch(`${window.location.protocol}//${window.location.host}/api/getAmount`)
-                    .then(res => res.text())
-                    .then(amount => document.getElementById("total").innerHTML = "£" + amount)
 
 
-                console.log(`%cJac, Click here to login ${window.location.protocol}//${window.location.host}/api/login`, "color:lightblue; background:black; font-size: 30px;")
-
-                const Toast = Swal.mixin({
-                    toast: true,
-                    position: 'top-end',
-                })
-
-                function getCookie(name) {
-                  var nameEQ = name + "=";
-                  var ca = document.cookie.split(';');
-                  for(var i=0;i < ca.length;i++) {
-                      var c = ca[i];
-                      while (c.charAt(0)==' ') c = c.substring(1,c.length);
-                      if (c.indexOf(nameEQ) == 0) return c.substring(nameEQ.length,c.length);
-                  }
-                  return null;
-                }
-
-                if (document.cookie.includes("at")) {
-                    console.log("Checked for token, Token found.")
-                    const accessToken = getCookie("at");
-                    // const tokenType = getCookie("token_type");
-                    const tokenType = "Bearer"
-            
-                    fetch('https://discordapp.com/api/users/@me', {
-                    headers: {
-                        authorization: `${tokenType} ${accessToken}`
+            <script src="https://embed.twitch.tv/embed/v1.js"></script>
+            <script>
+                window.onload = () => {
+                    fetch(`${window.location.protocol}//${window.location.host}/api/getAmount`)
+                        .then(res => res.text())
+                        .then(amount => document.getElementById("total").innerHTML = "£" + amount)
+    
+                    const Toast = Swal.mixin({
+                        toast: true,
+                        position: 'top-end',
+                    })
+    
+                    function getCookie(name) {
+                      var nameEQ = name + "=";
+                      var ca = document.cookie.split(';');
+                      for(var i=0;i < ca.length;i++) {
+                          var c = ca[i];
+                          while (c.charAt(0)==' ') c = c.substring(1,c.length);
+                          if (c.indexOf(nameEQ) == 0) return c.substring(nameEQ.length,c.length);
+                      }
+                      return null;
                     }
-                    })
-                    .then(res => res.json())
-                    .then(response => {
-                        const admins = ["359444812971245568", "577743466940071949"]
-                        if(admins.includes(response.id)){
-                            document.getElementById("loggedin").innerHTML = "<b>Logged in as " + response.username + "#" + response.discriminator + "</b>"
-                             + `<br><a href='${window.location.protocol}//${window.location.host}/admin'>Admin Panel</a>`
-                        } else {
-                            document.getElementById("loggedin").innerHTML = "<b>Logged in as " + response.username + "#" + response.discriminator + "</b>"
+    
+                    if (document.cookie.includes("at")) {
+                        console.log("Checked for token, Token found.")
+                        const accessToken = getCookie("at");
+                        // const tokenType = getCookie("token_type");
+                        const tokenType = "Bearer"
+                
+                        fetch('https://discordapp.com/api/users/@me', {
+                        headers: {
+                            authorization: `${tokenType} ${accessToken}`
                         }
-                    })
-                    .catch(error => {console.log(error)});
-            
+                        })
+                        .then(res => res.json())
+                        .then(response => {
+                            const admins = ["359444812971245568", "577743466940071949"]
+                            if(admins.includes(response.id)){
+                                document.getElementById("loggedin").innerHTML = document.getElementById("loggedin").innerHTML + "<hr> <b>Logged in as " + response.username + "#" + response.discriminator + "</b>"
+                                 + `<br><a href='${window.location.protocol}//${window.location.host}/admin'>Admin Panel</a>`
+                            } else {
+                                document.getElementById("loggedin").innerHTML = document.getElementById("loggedin").innerHTML + "<hr> <b>Logged in as " + response.username + "#" + response.discriminator + "</b>"
+                            }
+                        })
+                        .catch(error => {console.log(error)});
+                
+                    } else {
+                        document.getElementById("loggedin").innerHTML = document.getElementById("loggedin").innerHTML + `<hr> <a href="${window.location.protocol}//${window.location.host}/api/login"><i class="fab fa-discord" style="margin-right:5px"></i>Log In`
+                    }
+    
+                    var qu = new URLSearchParams(window.location.search);
+    
+                    if (qu.has("loggedin")){
+                        Toast.fire({
+                            icon: 'success',
+                            text: 'You are now logged in.'
+                        })
+                    }
                 }
-
-                var qu = new URLSearchParams(window.location.search);
-
-                if (qu.has("loggedin")){
-                    Toast.fire({
-                        icon: 'success',
-                        text: 'You are now logged in.'
-                    })
-                }
-
-                new Twitch.Embed("twitch-jaccy", {
-                    width: "100%",
-                    height: 530,
-                    channel: "jaccy",
-                    theme: "dark"         
-                });
-                new Twitch.Embed("twitch-stringy", {
-                    width: "40%",
-                    height: 480,
-                    channel: "etStringy",
-                    theme: "dark"           
-                });
-                new Twitch.Embed("twitch-doggy", {
-                    width: "40%",
-                    height: 480,
-                    channel: "DoggyPvPz",
-                    theme: "dark"           
-                });
-            }
-        </script>
-
-        </center>
-        </div>
+            </script>
     </body>
 </html>
+
+
+<!-- 
+
+-->

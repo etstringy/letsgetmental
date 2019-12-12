@@ -1,0 +1,139 @@
+<!DOCTYPE html>
+    <head>
+        <meta charset="utf-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <title>LGM 2019</title>
+        <meta name="description" content="Let's Get Mental 2019.">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+
+        <!-- Bootstrap -->
+        <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css" integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
+        <script src="https://code.jquery.com/jquery-3.4.1.slim.min.js" integrity="sha384-J6qa4849blE2+poT4WnyKhv5vZF5SrPo0iEjwBvKU7imGFAV0wwj1yYfoRSJoZ+n" crossorigin="anonymous"></script>
+        <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js" integrity="sha384-Q6E9RHvbIyZFJoft+2mJbHaEWldlvI9IOYy5n3zV9zzTtmI3UksdQRVvoxMfooAo" crossorigin="anonymous"></script>
+        <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js" integrity="sha384-wfSDF2E50Y2D1uUdj0O3uMBJnjuUD4Ih7YwaYd1iqfktj0Uod8GCExl3Og8ifwB6" crossorigin="anonymous"></script>
+        
+        <!-- Own CSS  -->
+        <link rel="stylesheet" href="style.css">
+
+        <!-- FontAwesome -->
+        <script src="https://kit.fontawesome.com/6e28df878b.js" crossorigin="anonymous"></script>
+
+        <!-- SA2 -->
+        <script src="https://cdn.jsdelivr.net/npm/sweetalert2@9"></script>
+    </head>
+    <body>
+        <div class="container">
+        <center>
+        <div class="jumbotron">
+                <img id="logo" src="./assets/LetsGetMental.png">
+                <p class="lead">Let's Get Mental is a fundraiser campaign created by <a href="https://twitch.tv/jaccy">Jaccy</a> to raise money <br>for The Scottish Association for Mental Health during 12-24th December.</p>
+                <p>You can donate using Bits or Subs in Jaccy's Streams, or donate in a #LetsGetMental stream.</p>
+                <p id="loggedin"></p>
+        </div>
+
+        <hr>
+        <h2>Total Raised:</h2>
+        <b><h1 id="total">Error</h1></b>
+
+        <h2 class="streamtitle"><i class="fab fa-twitch"></i>Jaccy</h2>
+        <div id="twitch-jaccy"></div>
+        </center>
+        
+        <div class="container jacthing">
+            <div id="stringy">
+                <h2 class="streamtitle"><i class="fab fa-twitch"></i>etStringy</h2><br><br>
+                <div id="twitch-stringy"></div>
+            </div>
+
+            <div id="doggy">
+                <h2 class="streamtitle"><i class="fab fa-twitch"></i>DoggyPvPz</h2><br><br>
+                <div id="twitch-doggy"></div>
+            </div>
+        </div>
+
+        <script src="https://embed.twitch.tv/embed/v1.js"></script>
+        <center>
+        <script>
+            window.onload = () => {
+                fetch(`${window.location.protocol}//${window.location.host}/api/getAmount`)
+                    .then(res => res.text())
+                    .then(amount => document.getElementById("total").innerHTML = "£" + amount)
+
+
+                console.log(`%cJac, Click here to login ${window.location.protocol}//${window.location.host}/api/login`, "color:lightblue; background:black; font-size: 30px;")
+
+                const Toast = Swal.mixin({
+                    toast: true,
+                    position: 'top-end',
+                })
+
+                function getCookie(name) {
+                  var nameEQ = name + "=";
+                  var ca = document.cookie.split(';');
+                  for(var i=0;i < ca.length;i++) {
+                      var c = ca[i];
+                      while (c.charAt(0)==' ') c = c.substring(1,c.length);
+                      if (c.indexOf(nameEQ) == 0) return c.substring(nameEQ.length,c.length);
+                  }
+                  return null;
+                }
+
+                if (document.cookie.includes("at")) {
+                    console.log("Checked for token, Token found.")
+                    const accessToken = getCookie("at");
+                    // const tokenType = getCookie("token_type");
+                    const tokenType = "Bearer"
+            
+                    fetch('https://discordapp.com/api/users/@me', {
+                    headers: {
+                        authorization: `${tokenType} ${accessToken}`
+                    }
+                    })
+                    .then(res => res.json())
+                    .then(response => {
+                        const admins = ["359444812971245568", "577743466940071949"]
+                        if(admins.includes(response.id)){
+                            document.getElementById("loggedin").innerHTML = "<b>Logged in as " + response.username + "#" + response.discriminator + "</b>"
+                             + `<br><a href='${window.location.protocol}//${window.location.host}/admin'>Admin Panel</a>`
+                        } else {
+                            document.getElementById("loggedin").innerHTML = "<b>Logged in as " + response.username + "#" + response.discriminator + "</b>"
+                        }
+                    })
+                    .catch(error => {console.log(error)});
+            
+                }
+
+                var qu = new URLSearchParams(window.location.search);
+
+                if (qu.has("loggedin")){
+                    Toast.fire({
+                        icon: 'success',
+                        text: 'You are now logged in.'
+                    })
+                }
+
+                new Twitch.Embed("twitch-jaccy", {
+                    width: "100%",
+                    height: 530,
+                    channel: "jaccy",
+                    theme: "dark"         
+                });
+                new Twitch.Embed("twitch-stringy", {
+                    width: "40%",
+                    height: 480,
+                    channel: "etStringy",
+                    theme: "dark"           
+                });
+                new Twitch.Embed("twitch-doggy", {
+                    width: "40%",
+                    height: 480,
+                    channel: "DoggyPvPz",
+                    theme: "dark"           
+                });
+            }
+        </script>
+
+        </center>
+        </div>
+    </body>
+</html>

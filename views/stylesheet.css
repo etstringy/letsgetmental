@@ -1,0 +1,192 @@
+/* Import the fonts from Google Fonts required. */
+@import url(https://fonts.googleapis.com/css?family=Open+Sans&display=swap);
+
+body {
+    font-family: "Open Sans";
+    background-color: #2A324B;
+}
+
+a{
+    color: white;
+}
+
+.overall-container {
+    width: 100vw;
+    display: block;
+    margin: 0px auto;
+}
+
+.header {
+    width: 95vw;
+    display: block;
+    margin: 10px auto 0px auto;
+}
+
+.total-container {
+    width: 200px;
+    height: 75px;
+    margin: 0px auto;
+
+    float: right;
+
+    background-color: #3E4B70;
+}
+
+.main-container {
+    width: 90vw;
+    display: block;
+    margin: 0px auto;
+    padding: 10px;
+
+    clear: both;
+    /* background-color: #3E4B70; */
+}
+
+.footer {
+    width: 90vw;
+    display: block;
+    margin: 10px auto 0px auto;
+}
+
+#main-logo {
+    height: 75px;
+    margin: 0px auto;
+
+    float: left;
+}
+
+#emote-logo {
+    width: 30vw;
+    margin: 0px auto;
+}
+
+#total-raised-text {
+    display: block;
+    margin: 0px auto;
+    text-align: center;
+    padding-top: 10px;
+    color: #F79279;
+}
+
+#total {
+    display: block;
+    margin: 0px auto;
+    text-align: center;
+    padding-top: 5px;
+    color: #F4CF70;
+}
+
+.title-text {
+    width: 80vw;
+    display: block;
+    margin: 10px auto 0px auto;
+    padding: 2vw;
+    color: #F79279;
+    background-color: #3E4B70;
+    font-size: 4vw;
+    text-align: center;
+}
+
+.body-text {
+    width: 80vw;
+    display: block;
+    margin: 0px auto;
+    padding: 2vw;
+    color: #F4CF70;
+    font-size: 3vw;
+    text-align: center;
+}
+
+.padding-perimeter {
+    padding: 10px;
+}
+
+.under-line {
+    border-bottom-width: 5px;
+    border-bottom-color: #000000;
+}
+
+@media screen and (min-width: 1200px) {
+    .title-text {
+        width: 80vw;
+        display: block;
+        margin: 10px auto 0px auto;
+        padding: 1vw;
+        color: #F79279;
+        background-color: #3E4B70;
+        font-size: 1.5vw;
+        text-align: center;
+    }
+
+    .body-text {
+        width: 80vw;
+        display: block;
+        margin: 0px auto;
+        padding: 2vw;
+        color: #F4CF70;
+        font-size: 1vw;
+        text-align: center;
+    }
+
+    #main-logo {
+        height: 100px;
+    }
+
+    #emote-logo {
+        width: 15vw;
+    }
+    
+    .total-container {
+        height: 100px;
+    }
+
+    #total-raised-text {
+        padding-top: 20px;
+        font-size: 18px;
+    }
+
+    #total {
+        font-size: 24px;
+    }
+    
+}
+
+.streamframe{
+    margin-left: 50px;
+}
+
+.streamtitle{
+    color: #F79279
+}
+
+iframe {
+    width: 95%;
+    border-color: transparent
+}
+
+.streamframesmall{
+    width: 40px;
+}
+
+.fa-twitch {
+    margin-right: 10px;
+}
+
+.form-control{
+    border-color: transparent;
+    padding: 5px;
+    background-color: #3E4B70;
+    color: white;
+}
+
+button{
+    border-color: transparent;
+    padding: 5px;
+    background-color: #F79279;
+}
+
+hr {
+    margin-left: 150px;
+    margin-right: 150px;
+    color: gray;
+}

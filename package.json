@@ -1,0 +1,19 @@
+{
+  "name": "lgm-website",
+  "version": "1.0.0",
+  "description": "Let's Get Mental Website",
+  "main": "index.js",
+  "author": "etstringy",
+  "license": "MIT",
+  "private": false,
+  "dependencies": {
+    "btoa": "^1.2.1",
+    "colors": "^1.4.0",
+    "dotenv": "^8.2.0",
+    "express": "^4.17.1",
+    "node-fetch": "^2.6.0"
+  },
+  "scripts": {
+    "start": "node index"
+  }
+}

@@ -1,0 +1,35 @@
+<!doctype html>
+<html>
+    <head>
+        <link href="https://fonts.googleapis.com/css?family=Open+Sans&display=swap" rel="stylesheet">
+
+        <meta name="viewport" content="width=device-width, initial-scale=1" />
+        <link rel="stylesheet" type="text/css" href="jaccy.css" />
+        <link rel="icon" type="image/png" href="Images/Emote.png" />
+    </head>
+    <body>
+            <!-- The main content of the website. -->
+            <div class="main-container">
+                <div id="top-part">
+                    <div id="name">
+                      Loading...
+                    </div>
+                    <img id="image" src="Images/Emote.png" width="100"/>
+                </div>
+            </div>
+
+            <script>
+                setInterval(() => {
+                    fetch(`${window.location.protocol}//${window.location.host}/api/getAmount`)
+                        .then(res => res.text())
+                        .then(amount => document.getElementById("name").innerHTML = "£" + amount + " raised")
+                }, 1000);
+
+            </script>
+    </body>
+</html>
+
+
+<!-- 
+
+-->

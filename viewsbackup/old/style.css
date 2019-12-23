@@ -1,0 +1,72 @@
+body{
+    background-color: #f6ede7;
+    font-family: YouTubeSans;
+    margin: 0;
+}
+
+hr{
+    margin: 50px;
+}
+.header{
+    background-color: #F79279;
+    padding: 40px;
+}
+
+.mainlogo{
+    height: auto;
+}
+
+.mainblock{
+    display: inline-block;
+}
+
+.center{
+    text-align: center;
+    align-content: center;
+    align-items: center;
+    align-self: center;
+}
+
+.black{
+    color: black;
+}
+
+
+
+
+
+
+/* Old */
+
+.streamtitle{
+    /* margin-right: 64vw; */
+    float: left;
+}
+
+.fa-twitch{
+    padding-right: 15px;
+}
+
+#stringy,
+#doggy{
+    float: right;
+    width: 50%;
+}
+
+#logo{
+    width: 75%;
+}
+
+.jacthink{
+    display: block;
+    width: 100vw;
+}
+
+iframe {
+    width: 95%;
+}
+
+@font-face {
+    font-family: YouTubeSans;
+    src: url("./assets/YTSans.otf") format("opentype")
+}

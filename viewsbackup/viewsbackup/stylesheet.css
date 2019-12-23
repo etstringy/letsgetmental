@@ -51,8 +51,8 @@ a{
 #main-logo {
     height: 75px;
     margin: 0px auto;
-    text-align: center;
-    /* float: left; */
+
+    float: left;
 }
 
 #emote-logo {
@@ -130,7 +130,6 @@ a{
 
     #main-logo {
         height: 100px;
-        
     }
 
     #emote-logo {
@@ -190,8 +189,4 @@ hr {
     margin-left: 150px;
     margin-right: 150px;
     color: gray;
-}
-
-.credits {
-    margin-top: 11.5%
 }

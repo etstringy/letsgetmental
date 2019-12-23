@@ -1,0 +1,127 @@
+<!DOCTYPE html>
+    <head>
+        <meta charset="utf-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <title>LGM 2019</title>
+        <meta name="description" content="Let's Get Mental 2019.">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+
+        <!-- Bootstrap -->
+        <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css" integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
+        <script src="https://code.jquery.com/jquery-3.4.1.slim.min.js" integrity="sha384-J6qa4849blE2+poT4WnyKhv5vZF5SrPo0iEjwBvKU7imGFAV0wwj1yYfoRSJoZ+n" crossorigin="anonymous"></script>
+        <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js" integrity="sha384-Q6E9RHvbIyZFJoft+2mJbHaEWldlvI9IOYy5n3zV9zzTtmI3UksdQRVvoxMfooAo" crossorigin="anonymous"></script>
+        <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js" integrity="sha384-wfSDF2E50Y2D1uUdj0O3uMBJnjuUD4Ih7YwaYd1iqfktj0Uod8GCExl3Og8ifwB6" crossorigin="anonymous"></script>
+        
+        <!-- Own CSS  -->
+        <link rel="stylesheet" href="style.css">
+
+        <!-- FontAwesome -->
+        <script src="https://kit.fontawesome.com/6e28df878b.js" crossorigin="anonymous"></script>
+
+        <!-- SA2 -->
+        <script src="https://cdn.jsdelivr.net/npm/sweetalert2@9"></script>
+    </head>
+    <body>
+        <div class="container">
+        <center>
+        <div class="jumbotron">
+                <img src="./assets/LetsGetMental.png">
+                <h1>Admininstration Panel</h1>
+                
+                <label for="amountHelp">Set Amount</label>
+                <input type="text" class="form-control" id="amount" aria-describedby="amountHelp" placeholder="12.67">
+                <br>
+                <button class="btn btn-primary" onclick="javascript:setAmount()">Submit</button>
+                <button class="btn btn-danger" onclick="javascript:clearAmount()">Reset</button>
+        </div>
+
+        <script>
+            window.onload = () => {
+                console.log(`%cJac, Click here to login ${window.location.protocol}//${window.location.host}/api/login`, "color:lightblue; background:black; font-size: 30px;")
+            }
+            
+            function getCookie(name) {
+                  var nameEQ = name + "=";
+                  var ca = document.cookie.split(';');
+                  for(var i=0;i < ca.length;i++) {
+                      var c = ca[i];
+                      while (c.charAt(0)==' ') c = c.substring(1,c.length);
+                      if (c.indexOf(nameEQ) == 0) return c.substring(nameEQ.length,c.length);
+                  }
+                  return null;
+            }
+            
+            function clearAmount() {
+                document.getElementById("amount").value = "0.00"
+            }
+
+            function setAmount() { 
+                if (document.cookie.includes("at")) {
+                    console.log("Checked for token, Token found.")
+                    const accessToken = getCookie("at");
+                    // const tokenType = getCookie("token_type");
+                    const tokenType = "Bearer"
+                
+                    let amnt = document.getElementById("amount").value
+
+                    if(!amnt){
+                        Swal.fire({
+                            icon: 'error',
+                            title: 'Oops...',
+                            text: 'You have not entered an amount'
+                        })
+                    } else {
+                        fetch(`${window.location.protocol}//${window.location.host}/api/setAmount?amnt=${amnt}`, {
+                            method: 'POST',
+                            headers: {
+                                authorisation: accessToken
+                            }
+                        })
+                        .then(res => res.json())
+                        .then(json => {
+                            console.log(json)
+                            if(json.code === "403"){
+                                Swal.fire({
+                                    icon: 'error',
+                                    title: 'Oops...',
+                                    text: 'No permission. You dirty hacker.'
+                                })
+                            }
+                            if(json.code === "notint"){
+                                Swal.fire({
+                                    icon: 'error',
+                                    title: 'Oops...',
+                                    text: 'You have not entered a valid number.'
+                                })
+                            }
+                            if(json.code === "200"){
+                                Swal.fire({
+                                    icon: 'success',
+                                    title: 'Success!',
+                                    text: 'Total updated! Make sure to refresh to see your changes.'
+                                })
+                            }
+                        })
+                        .catch(err => {
+                            console.log(err)
+                            Swal.fire({
+                                icon: 'error',
+                                title: 'Oops...',
+                                text: 'Something went wrong. ¯\_(ツ)_/¯'
+                            })
+                        })
+                    }
+                } else {
+                    Swal.fire({
+                        icon: 'error',
+                        title: 'Oops...',
+                        text: 'You need to login with Discord.'
+                    })
+                }
+            }
+        </script>
+
+        </center>
+        </div>
+    </body>
+</html>

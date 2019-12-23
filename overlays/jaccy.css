@@ -1,0 +1,32 @@
+body, html {
+    height: 100%;
+    width: 100%;
+    overflow: hidden;
+    font-family: "Calamity";
+    margin-left: 0;
+  }
+  
+  #top-part {
+    width: 300px;
+  
+    background: -webkit-linear-gradient(right, rgba(36, 23, 23, 0), rgba(36, 23, 23, 1));
+  }
+  
+  #name {
+    padding: 10px;
+    margin-top: 50px;
+  
+    font-size: 24px;
+    color: rgba(255, 255, 255, 1);
+    text-shadow: 1px 1px 1px rgba(0, 0, 0, 1);
+  }
+  
+  #image {
+    float: right;
+    margin-top: -75px;
+  }
+
+  @font-face{
+    font-family: Calamity;
+    src: url("Calamity.otf") format("opentype")
+  }

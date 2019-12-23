@@ -10,6 +10,10 @@ app.use('/', express.static('./views', {
     extensions: ['html', 'htm'],
 }))
 
+app.use('/overlay', express.static('./overlays', {
+    extensions: ['html', 'htm'],
+}))
+
 app.use('/api', require('./api/api'))
 
 app.listen(port, () => {

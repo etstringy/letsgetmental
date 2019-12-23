@@ -13,13 +13,21 @@ router.get('/', (req, res) => {
 })
 
 router.get('/login', (req, res) => {
-    const redirect = encodeURIComponent(req.protocol + '://' + req.get('host') + "/api/callback");
+    if(process.env.MODE === "production"){
+      redirect = encodeURIComponent(req.protocol + '://' + "letsgetmental.site" + "/api/callback");
+    }else{
+      redirect = encodeURIComponent(req.protocol + '://' + req.get('host') + "/api/callback");
+    }
     res.redirect(`https://discordapp.com/api/oauth2/authorize?client_id=${process.env.CLIENT_ID}&scope=identify&response_type=code&redirect_uri=${redirect}`);
 });
 
 router.get('/callback', async (req, res) => {
 
-    const redirect = encodeURIComponent(req.protocol + '://' + req.get('host') + "/api/callback");
+    if(process.env.MODE === "production"){
+      redirect = encodeURIComponent(req.protocol + '://' + "letsgetmental.site" + "/api/callback");
+    }else{
+      redirect = encodeURIComponent(req.protocol + '://' + req.get('host') + "/api/callback");
+    }
   
     if(!req.query.code && req.query.error){
       res.redirect(`/?denied=1`);
